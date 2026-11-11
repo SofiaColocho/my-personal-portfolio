@@ -9,15 +9,22 @@ const projectData = {
     title: 'FurryLove',
     description: 'For these reasons, we decided to create FurryLove, as it streamlines the adoption process for responsible individuals looking for a pet; with this application, users can now adopt a new pet in a matter of minutes.',
     tags: ['Power Apps', 'Adoption', 'Animal welfare'],
-    url: ''
+    url: 'https://agent-6af4050d85636a185ae60--website-link-7993ae.netlify.app/'
   },
 
   contafacill: {
-    title: 'ContaFácil',
-    description: 'This problem, along with the process we developed, led us to create Contafacil, which simplifies the management of business finances. This enables entrepreneurs to keep better track of their money and minimize errors, thereby helping them grow their businesses. ',
+    title: 'ColorMagico',
+    description: 'This opportunity, combined with the process we undertook, led us to create ColorMagico a tool that facilitates the learning of colors. It allows children to learn in a quick and interactive way, offering parents a unique approach to support their children through this stage of learning. ',
     tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Financial'],
-    url: 'https://contafacill.netlify.app'
+    url: 'https://colormagico.netlify.app'
   },
+
+contafacil: {
+    title: "ContaFacil",
+    description: "This problem, along with the process we developed, led us to create Contafacil, which simplifies the management of business finances. This enables entrepreneurs to keep better track of their money and minimize errors, thereby helping them grow their businesses.",
+    tags: ["HTML", "CSS", "JavaScript", "Financial Management"],
+    url: "https://contafacill.netlify.app"
+},
 
   cityride: {
     title: 'CityRide',
@@ -36,8 +43,6 @@ const modalLink = document.getElementById('modalLink');
 const modalClose = document.getElementById('modalClose');
 
 
-
-
 document.querySelectorAll('.project-card').forEach(card => {
 
   card.addEventListener('click', () => {
@@ -49,7 +54,6 @@ document.querySelectorAll('.project-card').forEach(card => {
     modalTitle.textContent = project.title;
     modalDescription.textContent = project.description;
 
-    
     modalTags.replaceChildren();
 
     project.tags.forEach(tag => {
@@ -67,7 +71,6 @@ document.querySelectorAll('.project-card').forEach(card => {
       modalLink.removeAttribute('href');
     }
 
-    
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
 
@@ -77,14 +80,10 @@ document.querySelectorAll('.project-card').forEach(card => {
 
 });
 
-
-
-
 function closeModal() {
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 
 modalClose.addEventListener('click', closeModal);
 
@@ -100,8 +99,6 @@ document.addEventListener('keydown', event => {
   }
 });
 
-    
-
 document.getElementById('modalClose').addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
@@ -113,7 +110,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
     const btn = document.getElementById('submitBtn');
     const note = document.getElementById('formNote');
 
-    // Estado de envío
     btn.disabled = true;
     btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
 
@@ -138,7 +134,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
             );
         }
 
-        // Mensaje exitoso
         note.textContent = 'Your message has been sent successfully! Thank you for contacting me.';
         note.style.color = '#287a50';
 
@@ -146,7 +141,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
     } catch (error) {
 
-        // Mensaje de error
         note.textContent = 'Something went wrong. Please try again later.';
         note.style.color = '#b94d3b';
 
@@ -154,17 +148,12 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
     } finally {
 
-        // Restaurar botón
         btn.disabled = false;
         btn.innerHTML = 'Send Message <i class="fa-regular fa-paper-plane"></i>';
 
     }
 });
 
-
-/* =====================================
-   AURORA CORAL - CURSOR ENGINE FIX
-===================================== */
 
 (() => {
 
@@ -212,7 +201,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
         dot.classList.add('active');
         ring.classList.add('active');
 
-        // Partículas de movimiento
         const now = performance.now();
 
         if (now - lastParticle > 40) {
@@ -239,7 +227,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
     });
 
-    // Seguimiento suave
     function animate() {
 
         if (initialized) {
@@ -257,7 +244,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
     animate();
 
-    // Hover sobre elementos interactivos
     document.addEventListener('mouseover', (e) => {
 
         if (e.target.closest(
@@ -286,7 +272,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
     });
 
-    // Clic
     document.addEventListener('mousedown', () => {
         ring.classList.add('click');
     });
@@ -295,7 +280,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
         ring.classList.remove('click');
     });
 
-    // Visibilidad
     document.addEventListener('mouseleave', () => {
         dot.classList.remove('active');
         ring.classList.remove('active');
@@ -311,3 +295,78 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
     console.log('Aurora Cursor: successfully initialized.');
 
 })();
+
+
+(() => {
+
+    const carousel = document.getElementById("achievementCarousel");
+    const prevButton = document.getElementById("achievementPrev");
+    const nextButton = document.getElementById("achievementNext");
+
+    if (!carousel || !prevButton || !nextButton) {
+        console.warn("Achievements carousel: elements not found.");
+        return;
+    }
+
+    const getStep = () => {
+        const card = carousel.querySelector(".gallery-card");
+
+        if (!card) return 300;
+
+        const gap = parseFloat(
+            getComputedStyle(carousel).gap
+        ) || 20;
+
+        return card.getBoundingClientRect().width + gap;
+    };
+
+    const updateButtons = () => {
+
+        const maxScroll =
+            carousel.scrollWidth - carousel.clientWidth;
+
+        prevButton.disabled = carousel.scrollLeft <= 2;
+
+        nextButton.disabled =
+            carousel.scrollLeft >= maxScroll - 2;
+    };
+
+    
+    prevButton.addEventListener("click", () => {
+
+        carousel.scrollBy({
+            left: -getStep(),
+            behavior: "smooth"
+        });
+
+    });
+
+    
+    nextButton.addEventListener("click", () => {
+
+        carousel.scrollBy({
+            left: getStep(),
+            behavior: "smooth"
+        });
+
+    });
+
+    
+    carousel.addEventListener("scroll", updateButtons);
+
+   
+    window.addEventListener("resize", updateButtons);
+
+    
+    updateButtons();
+
+    
+    carousel.querySelectorAll("img").forEach(image => {
+        image.addEventListener("load", updateButtons);
+        image.addEventListener("error", updateButtons);
+    });
+
+    console.log("Achievements carousel: successfully initialized.");
+
+})();
+

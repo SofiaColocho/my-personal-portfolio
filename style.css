@@ -12,7 +12,7 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 20px;border:1px solid transparent;border-radius:999px;font-weight:700;font-size:.86rem;transition:.25s;cursor:pointer}
     .btn-primary{background:var(--coral);color:white;box-shadow:0 9px 22px rgba(233,120,92,.22)}
     .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px)}
-    .btn-light{border-color:#d9c    9c0;background:rgba(255,255,255,.35)}
+    .btn-light{border-color:#d9c9c0;background:rgba(255,255,255,.35)}
     .btn-light:hover{background:white;transform:translateY(-2px)}
     .nav{position:sticky;top:0;z-index:20;background:rgba(255,248,243,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(234,222,215,.75)}
     .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
@@ -171,11 +171,6 @@
     @media(max-width:650px){.wrap{width:calc(100% - 34px)}.section{padding:70px 0}.nav-inner{height:66px}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:66px;left:0;right:0;padding:15px 24px 22px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{display:block;padding:11px 0}.nav-cta{margin-top:7px;text-align:center}.hero{padding:52px 0 48px}.hero-grid{grid-template-columns:1fr;text-align:center}.hero-visual{grid-row:1;min-height:280px}.portrait,.portrait-placeholder{width:235px;height:245px}.portrait-halo{width:265px}.status-card{width:175px;right:0;bottom:0;padding:12px;text-align:left}.hero h1{font-size:clamp(2.8rem,13vw,4.2rem)}.hero-copy{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}.tools{justify-content:center}.tools-label{width:100%;text-align:center}.section-head{display:block}.section-head p{margin-top:12px}.about-grid,.skills-grid,.contact-grid{grid-template-columns:1fr}.project-grid{grid-template-columns:1fr}.project-image{height:205px}.quote-band{align-items:flex-start;padding:20px}.soft-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr;gap:0}.footer-inner{flex-direction:column;text-align:center}}
     @media(max-width:390px){.soft-grid{grid-template-columns:1fr}.hero-actions .btn{width:100%}}
 
-
-/* =====================================
-   AURORA CORAL - CURSOR FIX
-===================================== */
-
 @media (hover: hover) and (pointer: fine) {
 
     html, body, a, button {
@@ -262,5 +257,442 @@
     .cursor-ring,
     .cursor-trail {
         display: none !important;
+    }
+}
+
+.achievements {
+  background: #fffdfb;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+
+.achievement-card {
+  background: #ffffff;
+  border: 1px solid rgba(30, 30, 30, 0.07);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 30px rgba(40, 30, 25, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 38px rgba(40, 30, 25, 0.09);
+}
+
+.achievement-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #ffede5;
+  color: var(--coral);
+  font-size: 23px;
+  margin-bottom: 22px;
+}
+
+.achievement-category {
+  display: inline-block;
+  color: var(--coral);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.achievement-card h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.achievement-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #77716e;
+}
+
+.achievement-note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding: 22px 26px;
+  background: #ffede5;
+  border-radius: 16px;
+  color: var(--coral);
+}
+
+.achievement-note i {
+  font-size: 22px;
+}
+
+.achievement-note p {
+  color: #514541;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  .achievements-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-card {
+    padding: 24px 20px;
+  }
+}
+
+
+.achievement-gallery {
+  margin-top: 65px;
+}
+
+.gallery-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.gallery-heading h3 {
+  font-size: 25px;
+  margin: 8px 0;
+}
+
+.gallery-heading p {
+  color: #77716e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.gallery-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.gallery-btn {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #f0d9d0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--coral);
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+  background: var(--coral);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.achievement-carousel {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 5px 3px 18px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--coral) #f3e9e4;
+}
+
+.achievement-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.achievement-carousel::-webkit-scrollbar-track {
+  background: #f3e9e4;
+  border-radius: 10px;
+}
+
+.achievement-carousel::-webkit-scrollbar-thumb {
+  background: var(--coral);
+  border-radius: 10px;
+}
+
+.gallery-card {
+  position: relative;
+  flex: 0 0 320px;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f5e9e3;
+  scroll-snap-align: start;
+  box-shadow: 0 8px 25px rgba(40, 30, 25, 0.07);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 35px 20px 18px;
+  color: #ffffff;
+  background: linear-gradient(
+    to top,
+    rgba(20, 15, 15, 0.85),
+    transparent
+  );
+}
+
+.gallery-caption span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffd6c8;
+}
+
+.gallery-caption h4 {
+  font-size: 17px;
+  margin-top: 5px;
+}
+
+.gallery-hint {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  color: #8b817d;
+  font-size: 12px;
+}
+
+
+@media (max-width: 600px) {
+  .gallery-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-heading h3 {
+    font-size: 22px;
+  }
+
+  .gallery-controls {
+    align-self: flex-end;
+  }
+
+  .gallery-card {
+    flex-basis: 85%;
+    height: 250px;
+  }
+}
+
+
+.achievement-gallery {
+    width: 100%;
+    margin-top: 65px;
+    overflow: hidden;
+}
+
+.gallery-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.gallery-heading h3 {
+    font: 800 clamp(1.4rem, 3vw, 1.8rem)/1.2 "Manrope", sans-serif;
+    letter-spacing: -0.04em;
+    margin: 9px 0;
+}
+
+.gallery-heading p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.gallery-controls {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.gallery-btn {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: white;
+    color: var(--coral);
+    cursor: pointer;
+    transition: background .25s, color .25s, transform .25s;
+}
+
+.gallery-btn:hover {
+    background: var(--coral);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.gallery-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+.achievement-carousel {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 3px 20px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--coral) var(--paper2);
+    -webkit-overflow-scrolling: touch;
+}
+
+.achievement-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.achievement-carousel::-webkit-scrollbar-track {
+    background: var(--paper2);
+    border-radius: 20px;
+}
+
+.achievement-carousel::-webkit-scrollbar-thumb {
+    background: var(--coral);
+    border-radius: 20px;
+}
+
+
+.gallery-card {
+    position: relative;
+    flex: 0 0 calc((100% - 40px) / 3);
+    min-width: 0;
+    height: 280px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--paper2);
+    scroll-snap-align: start;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 25px rgba(104,66,48,.08);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.06);
+}
+
+
+.gallery-caption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 40px 20px 18px;
+    color: white;
+    background: linear-gradient(
+        to top,
+        rgba(36, 32, 31, .88),
+        rgba(36, 32, 31, 0)
+    );
+}
+
+.gallery-caption span {
+    color: #ffd3c5;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.gallery-caption h4 {
+    font: 700 1rem "Manrope", sans-serif;
+    margin-top: 5px;
+}
+
+.gallery-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: .76rem;
+}
+
+
+@media (max-width: 850px) {
+    .gallery-card {
+        flex-basis: calc((100% - 20px) / 2);
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .gallery-controls {
+        align-self: flex-end;
+    }
+
+    .gallery-card {
+        flex-basis: 85%;
+        height: 245px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .achievement-carousel {
+        scroll-behavior: auto;
+    }
+
+    .gallery-card img,
+    .gallery-btn {
+        transition: none;
+    }
+}
+
+.gallery-heading {
+    padding-left: 40px;
+}
+
+@media (max-width: 600px) {
+    .gallery-heading {
+        padding-left: 15px;
     }
 }
