@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ContaFácil: controla las finanzas de tu pequeño negocio de forma sencilla.">
+  <title>ContaFácil | Finanzas simples para tu negocio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio"><span class="brand-mark">C</span> ContaFácil</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <nav id="mainNav">
+      <a href="#funciones">Funciones</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-login" href="#panel">Ver demostración</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow">FINANZAS CLARAS PARA NEGOCIOS PEQUEÑOS</span>
+        <h1>Tu negocio en orden.<br><span>Tus cuentas claras.</span></h1>
+        <p>Registra ventas, controla gastos y revisa tus ganancias desde un solo lugar. Sin complicaciones ni conocimientos contables.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#panel">Probar ContaFácil →</a>
+          <a class="btn secondary" href="#funciones">Conocer funciones</a>
+        </div>
+        <div class="trust-points"><span>✓ Fácil de usar</span><span>✓ Información organizada</span><span>✓ Para pequeños negocios</span></div>
+      </div>
+      <div class="hero-art" aria-label="Vista previa de un panel financiero">
+        <div class="float-card float-one"><span>Ventas de hoy</span><strong>$245.00</strong><small>↑ Buen trabajo</small></div>
+        <div class="mini-dashboard">
+          <div class="mini-top"><span class="brand-mark">C</span><b>ContaFácil</b><span class="online-dot"></span></div>
+          <p class="muted">Balance disponible</p><h2>$2,480.50</h2>
+          <div class="mini-chart"><i style="height:35%"></i><i style="height:54%"></i><i style="height:43%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:92%"></i><i style="height:78%"></i></div>
+          <div class="mini-stats"><div><small>Ingresos</small><b>$3,200</b></div><div><small>Gastos</small><b>$719.50</b></div></div>
+        </div>
+        <div class="float-card float-two"><span>Control de inventario</span><strong>24 productos</strong><small>Todo organizado</small></div>
+        <div class="decor decor-a"></div><div class="decor decor-b"></div>
+      </div>
+    </section>
+
+    <section class="feature-strip" id="funciones">
+      <article><span class="feature-icon">↗</span><div><b>Registra ventas</b><small>Ten tus ingresos al día.</small></div></article>
+      <article><span class="feature-icon">↓</span><div><b>Controla gastos</b><small>Conoce en qué utilizas tu dinero.</small></div></article>
+      <article><span class="feature-icon">▦</span><div><b>Administra inventario</b><small>Consulta tus productos fácilmente.</small></div></article>
+      <article><span class="feature-icon">▥</span><div><b>Revisa reportes</b><small>Entiende cómo va tu negocio.</small></div></article>
+    </section>
+
+    <section class="overview section" id="como-funciona">
+      <div class="overview-panel">
+        <aside class="side-menu"><b>ContaFácil</b><span>▦ Resumen</span><span>↗ Ventas</span><span>↓ Gastos</span><span>▤ Inventario</span><span>▥ Reportes</span></aside>
+        <div class="overview-content">
+          <div class="overview-heading"><div><small>RESUMEN DEL NEGOCIO</small><h3>¡Hola! Este es tu negocio</h3></div><span class="today">Este mes</span></div>
+          <div class="summary-cards"><div><small>Ingresos</small><b>$3,200.00</b><em>+12% este mes</em></div><div><small>Gastos</small><b>$719.50</b><em class="negative">Gastos registrados</em></div><div><small>Ganancia</small><b>$2,480.50</b><em>Balance positivo</em></div></div>
+          <div class="chart-box"><div><b>Movimiento del negocio</b><small>Ejemplo de actividad mensual</small></div><div class="bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:72%"></i><i style="height:63%"></i><i style="height:88%"></i></div><div class="months"><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span></div></div>
+        </div>
+      </div>
+      <div class="overview-copy"><span class="eyebrow">TODO EN UN MISMO LUGAR</span><h2>Más control para tomar mejores decisiones.</h2><p>ContaFácil te ayuda a tener una visión clara de tu negocio, para que puedas dedicar menos tiempo a ordenar cuentas y más tiempo a crecer.</p>
+        <ul><li>Consulta ingresos, gastos y ganancias.</li><li>Registra movimientos en pocos pasos.</li><li>Identifica productos y existencias.</li><li>Obtén un resumen fácil de entender.</li></ul>
+      </div>
+    </section>
+
+    <section class="demo-section section" id="panel">
+      <div class="section-heading"><span class="eyebrow">PRUEBA LA DEMOSTRACIÓN</span><h2>Un control sencillo de tus movimientos</h2><p>Agrega ventas o gastos y observa cómo se actualiza tu resumen. Los datos se guardan en este navegador.</p></div>
+      <div class="app-panel">
+        <div class="app-header"><div><span class="brand-mark">C</span><b>Mi negocio</b></div><span class="demo-label">DEMO INTERACTIVA</span></div>
+        <div class="metric-grid">
+          <div class="metric"><small>Ingresos</small><strong id="incomeTotal">$0.00</strong></div>
+          <div class="metric"><small>Gastos</small><strong id="expenseTotal">$0.00</strong></div>
+          <div class="metric"><small>Ganancia neta</small><strong id="profitTotal">$0.00</strong></div>
+        </div>
+        <form id="transactionForm" class="transaction-form">
+          <div class="field"><label for="description">Descripción</label><input id="description" type="text" placeholder="Ej. Venta de productos" required maxlength="60"></div>
+          <div class="field"><label for="amount">Monto ($)</label><input id="amount" type="number" placeholder="0.00" min="0.01" step="0.01" required></div>
+          <div class="field"><label for="type">Tipo</label><select id="type"><option value="income">Ingreso / venta</option><option value="expense">Gasto</option></select></div>
+          <button class="btn primary add-btn" type="submit">+ Agregar</button>
+        </form>
+        <div class="transactions-head"><h3>Movimientos recientes</h3><button id="clearData" class="text-button" type="button">Limpiar demo</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Descripción</th><th>Tipo</th><th>Fecha</th><th class="align-right">Monto</th></tr></thead><tbody id="transactionList"><tr class="empty-row"><td colspan="4">Todavía no hay movimientos. Agrega tu primera venta o gasto.</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="plans section" id="planes">
+      <div class="section-heading"><span class="eyebrow">SIMPLE Y ACCESIBLE</span><h2>Elige cómo empezar</h2><p>Una propuesta pensada para las necesidades de los pequeños negocios.</p></div>
+      <div class="plan-grid">
+        <article class="plan-card"><span class="plan-icon">🌱</span><h3>Básico</h3><p>Para comenzar a organizarte.</p><strong class="price">Gratis</strong><ul><li>Registro de ventas y gastos</li><li>Resumen de ganancias</li><li>Control básico</li></ul><a href="#panel" class="btn secondary full">Comenzar</a></article>
+        <article class="plan-card featured-plan"><span class="popular">RECOMENDADO</span><span class="plan-icon">🚀</span><h3>Emprendedor</h3><p>Para negocios en crecimiento.</p><strong class="price">$4.99 <small>/ mes</small></strong><ul><li>Todo lo del plan Básico</li><li>Control de inventario</li><li>Reportes mensuales</li></ul><a href="#contacto" class="btn primary full">Me interesa</a></article>
+        <article class="plan-card"><span class="plan-icon">🏪</span><h3>Negocio</h3><p>Para equipos pequeños.</p><strong class="price">$9.99 <small>/ mes</small></strong><ul><li>Todo lo del plan Emprendedor</li><li>Más de un usuario</li><li>Soporte prioritario</li></ul><a href="#contacto" class="btn secondary full">Consultar</a></article>
+      </div>
+      <p class="disclaimer">*Planes y precios ilustrativos para la presentación del proyecto.</p>
+    </section>
+
+    <section class="cta-section" id="contacto"><div><span class="eyebrow">DA EL SIGUIENTE PASO</span><h2>Haz que las cuentas de tu negocio sean más fáciles.</h2><p>Organiza tus finanzas y toma decisiones con mayor confianza.</p></div><a class="btn white-btn" href="mailto:hola@contafacil.com">Contáctanos →</a></section>
+  </main>
+
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">C</span> ContaFácil</a><p>Finanzas y administración sencilla para pequeños negocios.</p><small>© 2026 ContaFácil. Proyecto académico.</small><div class="footer-links"><a href="#funciones">Funciones</a><a href="#planes">Planes</a><a href="#contacto">Contacto</a></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
