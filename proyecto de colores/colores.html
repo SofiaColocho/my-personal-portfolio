@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorMágico AI 🎨</title>
+
+  <!-- Librerías de Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff1f7, #e8f7ff, #fff8d9);
+      color: #34345e;
+      text-align: center;
+    }
+
+    header {
+      padding: 24px 15px;
+      background: white;
+      border-bottom: 5px solid #ffd166;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #7956d8;
+      font-size: clamp(30px, 6vw, 48px);
+    }
+
+    header p {
+      margin-bottom: 0;
+      font-size: 17px;
+    }
+
+    main {
+      width: min(92%, 700px);
+      margin: 30px auto;
+    }
+
+    .card {
+      padding: 25px 18px;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 8px 25px #8c80b51c;
+      border: 3px solid #eee7ff;
+    }
+
+    .rainbow {
+      font-size: 52px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      color: #7956d8;
+      margin-top: 10px;
+    }
+
+    .instructions {
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    button {
+      border: none;
+      padding: 15px 22px;
+      margin: 8px 5px;
+      border-radius: 18px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.04);
+    }
+
+    .start {
+      background: #ff914d;
+      color: white;
+    }
+
+    .stop {
+      background: #eee7ff;
+      color: #6741b5;
+    }
+
+    #camera {
+      margin: 20px auto;
+      width: min(100%, 400px);
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    #camera canvas {
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 20px;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff6d9;
+      border-radius: 20px;
+    }
+
+    #colorName {
+      font-size: 30px;
+      font-weight: bold;
+      color: #7956d8;
+    }
+
+    #message {
+      font-size: 17px;
+    }
+
+    .color-pens {
+      font-size: 35px;
+      margin: 20px 0;
+      letter-spacing: 4px;
+    }
+
+    #status {
+      color: #6b6284;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 25px 12px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎨 ColorMágico AI</h1>
+    <p>¡Aprender los colores es toda una aventura!</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="rainbow">🌈</div>
+
+      <h2>¿Qué color tiene tu plumón?</h2>
+
+      <p class="instructions">
+        ¡Vamos a descubrirlo! 🖍️<br>
+        1. Pulsa el botón para activar la cámara.<br>
+        2. Muestra tu plumón frente a ella.<br>
+        3. ¡Mira qué color reconoce nuestra inteligencia artificial!
+      </p>
+
+      <button class="start" onclick="init()">
+        📸 ¡Descubrir mi color!
+      </button>
+
+      <button class="stop" onclick="stopCamera()">
+        ✋ Terminar
+      </button>
+
+      <div id="camera"></div>
+
+      <p id="status">¡Estoy listo para jugar contigo! ⭐</p>
+
+      <div id="result">
+        <div class="color-pens">🖍️ ✏️ 🖊️</div>
+        <div id="colorName">¿Qué color será?</div>
+        <p id="message">Muestra tu plumón para descubrirlo.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ⭐ Proyecto educativo con inteligencia artificial ⭐<br>
+    ¡Cada color es una nueva aventura!
+  </footer>
+
+  <script>
+    // ==========================================
+    // ENLACE DE TU MODELO DE TEACHABLE MACHINE
+    // Puedes cambiarlo aquí cuando quieras.
+    // ==========================================
+
+    const URL_MODELO =
+      "https://teachablemachine.withgoogle.com/models/zgTpTn3vj/";
+
+    let model;
+    let webcam;
+    let running = false;
+    let busy = false;
+    let animationId;
+
+    async function init() {
+      if (running) return;
+
+      const status = document.getElementById("status");
+      status.textContent = "✨ Preparando la magia...";
+
+      try {
+        const modelURL = URL_MODELO + "model.json";
+        const metadataURL = URL_MODELO + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+
+        webcam = new tmImage.Webcam(320, 320, true);
+        await webcam.setup();
+        await webcam.play();
+
+        document.getElementById("camera").replaceChildren(
+          webcam.canvas
+        );
+
+        running = true;
+        status.textContent =
+          "¡Cámara activada! Muestra tu plumón. 🖍️";
+
+        loop();
+
+      } catch (error) {
+        console.error(error);
+        status.textContent =
+          "No pudimos activar la cámara. Revisa los permisos y vuelve a intentarlo.";
+      }
+    }
+
+    async function loop() {
+      if (!running) return;
+
+      webcam.update();
+
+      if (!busy) {
+        busy = true;
+
+        try {
+          await predict();
+        } catch (error) {
+          console.error(error);
+        } finally {
+          busy = false;
+        }
+      }
+
+      if (running) {
+        animationId = requestAnimationFrame(loop);
+      }
+    }
+
+    async function predict() {
+      const predictions = await model.predict(webcam.canvas);
+
+      predictions.sort((a, b) => b.probability - a.probability);
+
+      const best = predictions[0];
+
+      const nombre = best.className;
+      const confianza = Math.round(best.probability * 100);
+
+      document.getElementById("colorName").textContent =
+        "¡Es " + nombre + "! 🎉";
+
+      document.getElementById("message").textContent =
+        "La inteligencia artificial tiene una confianza del " +
+        confianza + "%. ¡Sigue explorando los colores!";
+
+      document.getElementById("status").textContent =
+        "Estoy observando tu plumón... 🔍";
+    }
+
+    function stopCamera() {
+      running = false;
+      busy = false;
+
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+
+      if (webcam) {
+        webcam.stop();
+      }
+
+      document.getElementById("camera").replaceChildren();
+      document.getElementById("status").textContent =
+        "¡Buen trabajo! Puedes volver a jugar cuando quieras. ⭐";
+
+      document.getElementById("colorName").textContent =
+        "¿Qué color será?";
+
+      document.getElementById("message").textContent =
+        "Pulsa el botón para comenzar otra aventura.";
+    }
+  </script>
+
+</body>
+</html>
